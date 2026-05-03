@@ -132,7 +132,6 @@ def menucustomer():
         if pilihan == '1' or pilihan == 'belanja':
             os.system('cls')
             menubelanja()
-            # break
         elif pilihan == '2' or pilihan == 'tambah ke keranjang':
             os.system('cls')
             keranjang()
@@ -526,9 +525,9 @@ def keranjang():
     print('============================================')
     print('             AGROFARM SUPPLY                ')
     print('============================================')
-    print(f'Pengiriman ke Alamat            : {alamat}')
-    print(f'Total Pembayaran                : Rp {total_harga:,}')
-    print(f'Pembayaran                      : {metode}')
+    print(f'Pengiriman ke Alamat : {alamat}')
+    print(f'Total Pembayaran     : Rp {total_harga:,}')
+    print(f'Pembayaran           : {metode}')
     print('============================================')
     print('           PEMESANAN BERHASIL               ')
     print('        TERIMAKASIH TELAH MEMBELI           ')
@@ -560,7 +559,6 @@ def statuspembelian():
         df_pending = pd.read_csv(file_pending)
         df_pending = df_pending.reset_index(drop=True)
         df_pending.index += 1
-        df_pending.insert(0, 'No', df_pending.index)
         user_pending = df_pending[df_pending['Username'] == usernamelogin]
 
         if not user_pending.empty:
@@ -574,7 +572,6 @@ def statuspembelian():
         df_selesai = pd.read_csv(file_selesai)
         df_selesai = df_selesai.reset_index(drop=True)
         df_selesai.index += 1
-        df_selesai.insert(0, 'No', df_selesai.index)
         user_selesai = df_selesai[df_selesai['Username'] == usernamelogin]
 
         if not user_selesai.empty:
@@ -606,7 +603,6 @@ def riwayatpembelian():
     df = pd.read_csv(file_selesai)
     df = df.reset_index(drop=True)
     df.index += 1
-    df.insert(0, 'No', df.index)
     user_history = df[df['Username'] == usernamelogin]
 
     if user_history.empty:
